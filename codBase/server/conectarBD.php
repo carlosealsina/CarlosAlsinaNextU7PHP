@@ -24,32 +24,38 @@ class ConectorDB
 			$this->conexion->close();
 		}
 
-		function insertData($tabla, $data){
-			$sql = "INSERT INTO ".$tabla.' (';
-			$i = 1;
-			foreach ($data as $key => $value) {
-				$sql .= $key;
-				if($i < count($data)){
-					$sql.= ', ';
-				}else $sql.= ')';
-				$i++;
-			}
-			$sql .= 'VALUES (';
-			$i = 1;
-			foreach ($data as $key => $value) {
-				$sql .= "'".$value."'";
-				if($i < count($data)){
-					$sql .= ', ';
-				}else $sql .= ');';
-				$i++;
-			}
-
-			//echo $sql;
-			return $this->ejecutarQuery($sql);
-		}
-
 		function getConexion(){
 			return $this->conexion;
+		}
+
+		function consultas($tablas, $campos, $condicion = ""){
+			
+			$sql = "SELECT ";		//" FROM ";
+			$i=1;
+			foreach ($campos as $key => $value) {
+				$sql .= $value;
+				if ($i<count($campos)) {
+					$sql .= ", ";
+				}else $sql .= " FROM ";
+				$i++;
+			}
+			
+			$i=1;
+			foreach ($tablas as $key => $value) {
+				$sql .= $value;
+				if ($i<count($tablas)) {
+					$sql .= ", ";
+				}else $sql .= " ";
+				$i++;
+			}
+
+			if($condicion == ""){
+				$sql .= ";";
+			}else{
+				$sql .= $condicion.";";		
+			}
+
+			return $this->ejecutarQuery($sql);
 		}
 
 	}
