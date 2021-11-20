@@ -12,7 +12,8 @@
 
 		while ($row = mysqli_fetch_array($result)) {
 			    if (password_verify($password, $row['contrasena'])){
-			    	$msg['email'] = $row['email'];
+			    	session_start();
+			    	$_SESSION['username'] = $username;
 			    	$msg['msg'] = 'OK';
 			    }else{
 			    	$msg['msg'] = 'Usuario o contraseña incorrectos';
@@ -23,5 +24,7 @@
 	}else{
 		echo "error de conexión";
 	}
+
+	$con->cerrarConexion();
 
 ?>
