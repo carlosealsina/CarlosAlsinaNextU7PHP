@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2021 a las 04:17:33
+-- Tiempo de generación: 21-11-2021 a las 01:40:27
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 5.6.39
 
@@ -31,11 +31,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `eventos` (
   `id_evento` int(11) NOT NULL,
   `fk_id_usuario` int(11) NOT NULL,
-  `titulo` varchar(50) NOT NULL,
+  `titulo` varchar(250) NOT NULL,
   `fecha_inicio` date NOT NULL,
-  `hora_inicio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `hora_inicio` time NOT NULL,
   `fecha_finalizacion` date NOT NULL,
-  `hora_finalizacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `hora_finalizacion` time NOT NULL,
   `todo_dia` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -44,7 +44,7 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id_evento`, `fk_id_usuario`, `titulo`, `fecha_inicio`, `hora_inicio`, `fecha_finalizacion`, `hora_finalizacion`, `todo_dia`) VALUES
-(1, 1, 'evento 1', '2021-11-07', '2021-11-08 04:03:33', '2021-11-07', '2021-11-07 19:00:00', 0);
+(1, 1, 'evento 1', '2021-11-07', '00:24:30', '2021-11-08', '10:25:36', 0);
 
 -- --------------------------------------------------------
 
