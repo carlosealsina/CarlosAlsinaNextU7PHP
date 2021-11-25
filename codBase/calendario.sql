@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2021 a las 01:40:27
+-- Tiempo de generación: 25-11-2021 a las 05:16:01
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 5.6.39
 
@@ -44,7 +44,8 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id_evento`, `fk_id_usuario`, `titulo`, `fecha_inicio`, `hora_inicio`, `fecha_finalizacion`, `hora_finalizacion`, `todo_dia`) VALUES
-(1, 1, 'evento 1', '2021-11-07', '00:24:30', '2021-11-08', '10:25:36', 0);
+(1, 1, 'evento 1', '2021-11-07', '00:24:30', '2021-11-08', '10:25:36', 0),
+(18, 1, 'evento 2', '2021-11-18', '00:00:00', '0000-00-00', '00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
