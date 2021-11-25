@@ -58,6 +58,61 @@ class ConectorDB
 			return $this->ejecutarQuery($sql);
 		}
 
+		function insertData($tabla, $campos){
+
+	        $sql = 'INSERT INTO ' . $tabla . ' (';
+	        $i   = 1;
+	        foreach ($campos as $key => $value) {
+	            $sql .= $key;
+	            if ($i < count($campos)) {
+	                $sql .= ', ';
+	            } else {
+	                $sql .= ')';
+	            }
+
+	            $i++;
+	        }
+	        $sql .= ' VALUES (';
+	        $i = 1;
+	        foreach ($campos as $key => $value) {
+	            $sql .= $value;
+	            if ($i < count($campos)) {
+	                $sql .= ', ';
+	            } else {
+	                $sql .= ');';
+	            }
+
+	            $i++;
+	        }
+	        
+			return $this->ejecutarQuery($sql);
+
+    	}
+
+    	function eliminarRegistro($tabla, $condicion)
+    	{
+        	$sql = "DELETE FROM " . $tabla . " WHERE " . $condicion . ";";
+        	return $this->ejecutarQuery($sql);
+    	}
+
+    	function actualizarRegistro($tabla, $data, $condicion)
+	    {
+	        $sql = 'UPDATE ' . $tabla . ' SET ';
+	        $i   = 1;
+	        foreach ($data as $key => $value) {
+	            $sql .= $key . '=' . $value;
+	            if ($i < sizeof($data)) {
+	                $sql .= ', ';
+	            } else {
+	                $sql .= ' WHERE ' . $condicion . ';';
+	            }
+
+	            $i++;
+	        }
+	        
+	        return $this->ejecutarQuery($sql);
+	    }
+
 	}
 
 
